@@ -10,5 +10,5 @@ class User:
             + self.organization
             + "\nArea...............: "
             + self.area
-            + "\n---------------------------------------"
+            
         )

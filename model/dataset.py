@@ -15,5 +15,6 @@ class Dataset:
             + self.storage_location
             + "\n"
             + str(self.owner)
+            + "\n---------------------------------------"
         )
         return me

@@ -13,6 +13,7 @@ def post_user_request(user: User, req: Request):
         print("\033[32m/--------------------------------\\")
         print("\033[41m\033[93m  " + err.reason + "  \033[0m")
         print("\033[32m\\--------------------------------/    \033[0m")
+        print("---------------------------------------")
 
 
 def send_requests_sales_area():
