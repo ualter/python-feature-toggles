@@ -38,7 +38,7 @@ def send_requests_management_area():
 
 def send_user_requests():
     send_requests_sales_area()
-    send_requests_management_area
+    send_requests_management_area()
 
 
 def main():
