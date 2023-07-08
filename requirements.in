@@ -1,2 +1,2 @@
 # -c requirements-dev.in
-flask
+pyyaml

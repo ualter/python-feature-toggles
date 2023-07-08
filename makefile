@@ -49,6 +49,7 @@ venv-off: check-tools ## Leave .venv Python Virtual Environment
 init:  ## Install Python dependencies (dev and runtime)
 	clear ; \
 	pip-compile --output-file requirements.txt requirements.in requirements-dev.in ; \
+	pip install -r requirements.txt ; \
 	printf " \033[36m-------------------------------------------\033[0m\n"; \
 	printf " \033[36mDone! (install deps)\033[0m\n"; \
 	printf " \033[36m-------------------------------------------\033[0m\n"; \

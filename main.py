@@ -1,5 +1,16 @@
 from db import get_user
-from server import Context, create_dataset_request, post_request
+from server import Context, Request, create_dataset_request, post_request
+from services import DatasetInvalidCreation
+
+
+def post_user_request(ctx: Context, req: Request):
+    try:
+        response = post_request(ctx, req)
+        print(response.body)
+    except DatasetInvalidCreation as err:
+        print("\033[32m/--------------------------------\\")
+        print("\033[41m\033[93m  " + err.reason + "  \033[0m")
+        print("\033[32m\\--------------------------------/    \033[0m")
 
 
 def send_requests_sales_area():
@@ -9,14 +20,12 @@ def send_requests_sales_area():
     req = create_dataset_request()
     req["name"] = "Crime Rate"
     req["storage_location"] = "S3"
-    response = post_request(ctx, req)
-    print(response.body)
+    post_user_request(ctx, req)
 
     req = create_dataset_request()
     req["name"] = "Health Problems"
     req["storage_location"] = "EBS"
-    response = post_request(ctx, req)
-    print(response.body)
+    post_user_request(ctx, req)
 
 
 def send_requests_management_area():
