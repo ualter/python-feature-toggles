@@ -1,10 +1,12 @@
 from db import get_user
+from model import User
 from server import Context, Request, create_dataset_request, post_request
 from services import DatasetInvalidCreation
 
 
-def post_user_request(ctx: Context, req: Request):
+def post_user_request(user: User, req: Request):
     try:
+        ctx = Context(user=user)
         response = post_request(ctx, req)
         print(response.body)
     except DatasetInvalidCreation as err:
@@ -15,34 +17,29 @@ def post_user_request(ctx: Context, req: Request):
 
 def send_requests_sales_area():
     user = get_user("willy")
-    ctx = Context(user=user)
-
     req = create_dataset_request()
     req["name"] = "Crime Rate"
     req["storage_location"] = "S3"
-    post_user_request(ctx, req)
+    post_user_request(user, req)
 
     req = create_dataset_request()
     req["name"] = "Health Problems"
     req["storage_location"] = "EBS"
-    post_user_request(ctx, req)
+    post_user_request(user, req)
 
 
 def send_requests_management_area():
     user = get_user("izzy")
-    ctx = Context(user=user)
 
     req = create_dataset_request()
     req["name"] = "Storms Frequency"
     req["storage_location"] = "S3"
-    response = post_request(ctx, req)
-    print(response.body)
+    post_user_request(user, req)
 
     req = create_dataset_request()
     req["name"] = "Climate Temperature Variation"
     req["storage_location"] = "EBS"
-    response = post_request(ctx, req)
-    print(response.body)
+    post_user_request(user, req)
 
 
 def send_user_requests():
