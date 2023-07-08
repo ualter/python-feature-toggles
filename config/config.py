@@ -1,8 +1,13 @@
 import yaml
 import os
+from enum import Enum
 
 
 FEATURE_CONFIG_FILE = "./config/features.yml"
+
+
+class Feature(Enum):
+    STORAGE_PERMISSIONS_BY_AREA = 1
 
 
 class ConfigException(Exception):
@@ -20,5 +25,11 @@ class Config:
         else:
             raise ConfigException(message="File " + file_path + "not found")
 
-    def is_storage_permissions_by_area_on(self) -> bool:
-        return self.configuration["features"]["storage-permissions-by-area"]["state"]
+    def is_enable(self, feature: Feature) -> bool:
+        features = self.configuration["features"]
+
+        match feature:
+            case Feature.STORAGE_PERMISSIONS_BY_AREA:
+                return features["storage-permissions-by-area"]["state"]
+            case _:
+                return False
