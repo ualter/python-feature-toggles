@@ -1,19 +1,19 @@
 from db import get_user
 from model import User
-from server import Context, Request, create_dataset_request, post_request
-from services import DatasetInvalidCreation
+from server import Context, Request, ResponseStatus, create_dataset_request, post_request
 
 
 def post_user_request(user: User, req: Request):
-    try:
-        ctx = Context(user=user)
-        response = post_request(ctx, req)
-        print(response.body)
-    except DatasetInvalidCreation as err:
+    ctx = Context(user=user)
+    response = post_request(ctx, req)
+    if response.status == ResponseStatus.FAILED:
         print("\033[32m/--------------------------------\\")
-        print("\033[41m\033[93m  " + err.reason + "  \033[0m")
+        print("  Cause: \033[40m\033[94m" + response.erro_cause + "  \033[0m")
+        print("\033[41m\033[93m  " + response.error.reason + "  \033[0m")
         print("\033[32m\\--------------------------------/    \033[0m")
         print("---------------------------------------")
+    else:
+        print(response.body)
 
 
 def send_requests_sales_area():

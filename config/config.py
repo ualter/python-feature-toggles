@@ -7,7 +7,7 @@ FEATURE_CONFIG_FILE = "./config/features.yml"
 
 
 class Feature(Enum):
-    STORAGE_PERMISSIONS_BY_AREA = 1
+    DATASET_PERMISSIONS_BY_AREA = 1
 
 
 class ConfigException(Exception):
@@ -29,7 +29,7 @@ class Config:
         features = self.configuration["features"]
 
         match feature:
-            case Feature.STORAGE_PERMISSIONS_BY_AREA:
-                return features["storage-permissions-by-area"]["state"]
+            case Feature.DATASET_PERMISSIONS_BY_AREA:
+                return features["dataset-permissions-by-area"]["state"]
             case _:
                 return False
