@@ -1,3 +1,4 @@
 features:
   dataset-permissions-by-area: 
+    id: ft_perm_area
     state: true
