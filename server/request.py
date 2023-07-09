@@ -5,5 +5,6 @@ class Request(dict):
 
 def create_dataset_request() -> Request:
     req = Request()
+    req["service"] = "dataset"
     req["action"] = "create_dataset"
     return req
