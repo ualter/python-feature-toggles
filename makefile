@@ -11,12 +11,20 @@ help:  ## Display this help
 test: check-tools ## Run pytest
 	clear ; \
 	printf " \n"; \
-	pytest -sv ; \
+	pytest -v ; \
 	printf " \033[36m-------------------------------------------\033[0m\n"; \
 	printf " \033[36mDone! (pytest)\033[0m\n"; \
 	printf " \033[36m-------------------------------------------\033[0m\n"; \
 	printf " \n"; \
 
+run: check-tools ## Run me
+	clear ; \
+	printf " \n"; \
+	python main.py ; \
+	printf " \033[36m-------------------------------------------\033[0m\n"; \
+	printf " \033[36mDone! (run)\033[0m\n"; \
+	printf " \033[36m-------------------------------------------\033[0m\n"; \
+	printf " \n"; \
 
 venv-on: check-tools ## Start .venv Python Virtual Environment
 	@printf " \n"; \

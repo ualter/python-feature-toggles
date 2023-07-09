@@ -4,13 +4,29 @@
 #
 #    pip-compile --output-file=requirements.txt requirements-dev.in requirements.in
 #
+exceptiongroup==1.1.2
+    # via pytest
 flake8==6.0.0
     # via -r requirements-dev.in
+iniconfig==2.0.0
+    # via pytest
 mccabe==0.7.0
     # via flake8
+packaging==23.1
+    # via pytest
+pluggy==1.2.0
+    # via pytest
 pycodestyle==2.10.0
     # via flake8
 pyflakes==3.0.1
     # via flake8
+pytest==7.4.0
+    # via
+    #   -r requirements-dev.in
+    #   pytest-mock
+pytest-mock==3.11.1
+    # via -r requirements-dev.in
 pyyaml==6.0
     # via -r requirements.in
+tomli==2.0.1
+    # via pytest
